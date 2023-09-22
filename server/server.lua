@@ -2,10 +2,10 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 RegisterNetEvent('rv_invoices:server:SendInvoice', function(id, amount, business)
     local src = source
-    -- if src == id then
-    --     TriggerClientEvent('QBCore:Notify', src, 'You cannot invoice yourself!', 'error')
-    --     return
-    -- end
+    if src == id then
+        TriggerClientEvent('QBCore:Notify', src, 'You cannot invoice yourself!', 'error')
+        return
+    end
     local Player = QBCore.Functions.GetPlayer(src)
     local job
     if business == true then
